@@ -1,0 +1,36 @@
+# Core dependencies
+streamlit>=1.28.0
+langchain>=0.1.0
+langchain-google-genai>=1.0.0
+langchain-community>=0.0.20
+sentence-transformers>=2.2.0
+google-generativeai>=0.3.0
+
+# Vector storage
+chromadb>=0.4.0
+faiss-cpu>=1.7.0
+numpy>=1.24.0
+
+# SEC data scraping
+sec-edgar-downloader>=5.0.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+
+# Text processing
+tiktoken>=0.5.0
+pypdf>=3.17.0
+nltk>=3.8.0
+
+# Utilities
+tqdm>=4.66.0
+python-dateutil>=2.8.0
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
