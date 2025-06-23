@@ -28,6 +28,8 @@ An AI-powered conversational system that analyzes SEC filings for the Magnificen
 ### Prerequisites
 - Python 3.8+
 - [Gemini API key](https://aistudio.google.com/app/apikey) (free tier available)
+- Stable internet connection (for downloading SEC filings on first run)
+- ~2GB free disk space (for storing processed documents)
 
 ### Installation
 
@@ -46,13 +48,26 @@ echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env
 streamlit run app.py
 ```
 
-### Setup
-1. Open http://localhost:8501
-2. Go to **Settings** tab → Enter your Gemini API key → Click **"Initialize System"**
-3. The system will automatically download and process SEC filings (this may take a few minutes on first run)
-4. Switch to **Chat** tab and start asking questions!
+### Setup & First Run
 
-> **Note**: The system downloads SEC filings automatically on first initialization. No manual data setup required!
+1. **Start the application**
+   ```bash
+   streamlit run app.py
+   ```
+   Open http://localhost:8501
+
+2. **Initialize the system** (First time only)
+   - Go to **Settings** tab
+   - Enter your Gemini API key
+   - Click **"Initialize System"**
+   - **Wait for data download**: The system will automatically download and process SEC filings (this takes 5-10 minutes on first run)
+   - You'll see progress updates as it downloads and processes documents
+
+3. **Start using the system**
+   - Once initialization is complete, switch to **Chat** tab
+   - Start asking financial questions about MAG7 companies!
+
+> **⚠️ Important**: The system needs to download ~1,600 SEC documents on first run. Make sure you have a stable internet connection and allow 5-10 minutes for initial setup.
 
 ## 💡 Example Queries
 
@@ -175,9 +190,25 @@ mag7-financial-qa/
 ## 🔧 Troubleshooting
 
 **Common Issues:**
-- **"Vector Database: Not Connected"**: Initialize system with valid Gemini API key
-- **"No data found"**: Check Data Management tab for available time periods
-- **Slow responses**: Normal for complex queries; simple queries respond in 3-5 seconds
+
+**"Vector Database: Not Connected"**
+- Solution: Go to Settings tab and click "Initialize System" with a valid Gemini API key
+- Wait for the data download to complete (5-10 minutes on first run)
+
+**"No data found for your query"**
+- Cause: System hasn't downloaded data yet or initialization failed
+- Solution: Check Data Management tab to see if filings are available
+- Re-run initialization if needed
+
+**Slow or failed initialization**
+- Check your internet connection (needs to download ~1GB of SEC filings)
+- Verify your Gemini API key is valid and has quota remaining
+- Try restarting the application and re-initializing
+
+**Slow responses during chat**
+- Normal for complex cross-company queries (may take 5-10 seconds)
+- Simple queries should respond in 3-5 seconds
+- If consistently slow, check system resources
 
 **Setup Validation:**
 ```bash
